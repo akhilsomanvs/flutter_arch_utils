@@ -20,6 +20,14 @@ class AppDateUtils {
     return dateToReturn;
   }
 
+  static String getTimeHMS(DateTime dateTime) {
+    return "${dateTime.hour}:${dateTime.minute}:${dateTime.second}";
+  }
+
+  static String getTimeHM(DateTime dateTime) {
+    return "${dateTime.hour}:${dateTime.minute}";
+  }
+
   static String getCurrentDate() {
     DateTime dateTime = DateTime.now();
     return getDateFromDateTime(dateTime);
