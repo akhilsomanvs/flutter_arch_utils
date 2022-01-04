@@ -1,3 +1,4 @@
+part of flutter_arch_utils;
 class FormValidators {
   static String? emailFieldValidator(value) {
     var val = value.toString();

@@ -1,4 +1,4 @@
-import 'dart:io';
+part of flutter_arch_utils;
 
 class AppUtils {
   static String getPlatform() {

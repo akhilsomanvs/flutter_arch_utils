@@ -1,3 +1,4 @@
+part of flutter_arch_utils;
 class AppDateUtils {
   static List<String> _monthList = [
     "Jan",

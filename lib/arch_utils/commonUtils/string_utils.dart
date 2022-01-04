@@ -1,10 +1,17 @@
+part of flutter_arch_utils;
+
 extension StringSanityCheck on String? {
+  String capitalize() {
+    if (this == null) return "";
+    return "${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}";
+  }
+
   bool isNull() {
     return this == null;
   }
 
   bool isNullOrEmpty() {
-    return (this == null || (this!=null &&  this!.isEmpty));
+    return (this == null || (this != null && this!.isEmpty));
   }
 
   String returnEmptyIfNull() {
@@ -63,7 +70,7 @@ extension StringSanityCheck on String? {
       return false;
     }
     return true;
-   /* String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    /* String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
     RegExp regExp = new RegExp(pattern);
     return regExp.hasMatch(this);*/
   }
