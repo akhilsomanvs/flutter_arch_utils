@@ -20,3 +20,37 @@ flutter_arch_utils:
     git:
       url: git://github.com/akhilsomanvs/flutter_arch_utils.git
 ```
+Add the following in main.dart
+
+```dart
+// Add this function
+Future<void> _ensureScreenSize(window) async {
+  return window.viewConfiguration.geometry.isEmpty
+      ? Future.delayed(
+             const Duration(milliseconds: 10),
+             () => _ensureScreenSize(window)
+         )
+      : Future.value();
+}
+
+void main() async {
+  // Add these lines before calling ScreenUtil.init()/ScreenUtilInit()
+  // Better add these lines before runApp() if you are using native splash screen
+  final window = WidgetsFlutterBinding.ensureInitialized().window;
+  await _ensureScreenSize(window);
+  runApp(const MyApp());
+}
+```
+
+And in wrap the MaterialApp inside SizeConfigParentWidget 
+
+```dart
+return SizeConfigParentWidget(
+  builder: (context, constraints, orientation) => MaterialApp(
+    title: 'App Name',
+    debugShowCheckedModeBanner: false,
+    home: HomeScreen(),
+    // home: OnBoardingSurveyScreen(),
+  ),
+);
+```

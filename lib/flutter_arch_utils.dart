@@ -2,7 +2,7 @@ library flutter_arch_utils;
 
 import 'dart:convert';
 import 'dart:math';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -10,6 +10,7 @@ import 'arch_utils/enums/device_screen_type.dart';
 import 'arch_utils/utils/sizing_information.dart';
 import 'arch_utils/utils/ui_utils.dart';
 
+part 'arch_utils/commonUtils/app_utils.dart';
 part 'arch_utils/commonUtils/date_utils.dart';
 part 'arch_utils/commonUtils/formfield_validators.dart';
 part 'arch_utils/commonUtils/json_utils.dart';
