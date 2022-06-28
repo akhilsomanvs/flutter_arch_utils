@@ -15,18 +15,18 @@ extension StringSanityCheck on String? {
   }
 
   String returnEmptyIfNull() {
-    if (this.isNullOrEmpty()) {
+    if (isNullOrEmpty()) {
       return "";
     }
     return this!;
   }
 
   String? getDifferenceFrom(String secondString) {
-    if (this.isNullOrEmpty() || secondString.isNullOrEmpty()) {
+    if (isNullOrEmpty() || secondString.isNullOrEmpty()) {
       return null;
     }
 
-    int? index = this.getIndexOfDifference(secondString);
+    int? index = getIndexOfDifference(secondString);
     if (index == null) {
       return null;
     }
@@ -38,13 +38,13 @@ extension StringSanityCheck on String? {
       return null;
     }
 
-    if (this.isNullOrEmpty() || secondString.isNullOrEmpty()) {
+    if (isNullOrEmpty() || secondString.isNullOrEmpty()) {
       return 0;
     }
 
     int i = 0;
     for (i = 0; i < this!.length && i < secondString.length; i++) {
-      if (this.getCharAt(i) != secondString.getCharAt(i)) {
+      if (getCharAt(i) != secondString.getCharAt(i)) {
         break;
       }
     }
@@ -59,14 +59,14 @@ extension StringSanityCheck on String? {
   }
 
   bool isValidEmail() {
-    if (this.isNullOrEmpty()) {
+    if (isNullOrEmpty()) {
       return false;
     }
     return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(this!);
   }
 
   bool isValidPassword() {
-    if (this == null || this!.length == 0 || this.isNullOrEmpty()) {
+    if (this == null || this!.length == 0 || isNullOrEmpty()) {
       return false;
     }
     return true;
@@ -75,13 +75,4 @@ extension StringSanityCheck on String? {
     return regExp.hasMatch(this);*/
   }
 
-  bool isValidPersonName() {
-    /*if(this==null || this.isEmpty){
-      return false;
-    }
-    String pattern = r"^[\\p{L} .'-]+$";
-    RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(this);*/
-    return true;
-  }
 }

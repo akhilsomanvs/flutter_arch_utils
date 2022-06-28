@@ -1,23 +1,27 @@
 part of flutter_arch_utils;
 
 class VSpace extends StatelessWidget {
-  double height = 0;
+  final double height;
 
-  VSpace(this.height);
+  const VSpace(this.height, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(height: (height).vdp());
+    return SizedBox(
+      height: height,
+    );
   }
 }
 
 class HSpace extends StatelessWidget {
-  double width = 0;
+  final double width;
 
-  HSpace(this.width);
+  const HSpace(this.width, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(width: (width).hdp());
+    return SizedBox(
+      width: width,
+    );
   }
 }

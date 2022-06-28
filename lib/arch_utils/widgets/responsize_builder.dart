@@ -1,6 +1,5 @@
 part of flutter_arch_utils;
 
-
 class ResponsiveBuilder extends StatelessWidget {
   final Widget Function(BuildContext context, SizingInformation sizingInformation) builder;
 
@@ -12,7 +11,7 @@ class ResponsiveBuilder extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         var sizingInformation = SizingInformation(
-          deviceScreenType: getDeviceType(mediaQuery),
+          deviceScreenType: DeviceType.getDeviceType(mediaQuery),
           screenSize: mediaQuery.size,
           localWidgetSize: Size(constraints.maxWidth, constraints.maxHeight),
         );

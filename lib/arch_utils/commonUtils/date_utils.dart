@@ -1,4 +1,5 @@
 part of flutter_arch_utils;
+
 class AppDateUtils {
   static List<String> _monthList = [
     "Jan",
@@ -43,6 +44,10 @@ class AppDateUtils {
       return TimeGreeting.AFTERNOON;
     }
     return TimeGreeting.EVENING;
+  }
+
+  static String getFormattedDateTimeForFileName(DateTime dateTime) {
+    return DateFormat('yyyyMMddhhmmss').format(dateTime);
   }
 }
 

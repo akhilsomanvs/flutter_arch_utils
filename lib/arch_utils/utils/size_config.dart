@@ -1,8 +1,7 @@
 part of flutter_arch_utils;
 
-
 class SizeConfig {
-  static late MediaQueryData _mediaQueryData;
+  // static late MediaQueryData _mediaQueryData;
   static late double _screenWidth;
   static late double _screenHeight;
   static double _blockSizeHorizontal = 0;
@@ -12,20 +11,25 @@ class SizeConfig {
   static late double _imageSizeMultiplier;
   static late double _heightMultiplier;
   static late double _widthMultiplier;
+  static late double _designHeightMultiplier;
+  static late double _designWidthMultiplier;
   static bool isPortrait = true;
   static bool isMobilePortrait = false;
 
-  void init(BuildContext context) {
-    _mediaQueryData = MediaQuery.of(context);
-    isPortrait = _mediaQueryData.orientation == Orientation.portrait;
-    isMobilePortrait = isPortrait && getDeviceType(_mediaQueryData) == DeviceScreenType.Mobile;
+  void init(Size designSize, BoxConstraints constraints, Orientation orientation) {
+    // _mediaQueryData = MediaQuery.of(context);
+    isPortrait = orientation == Orientation.portrait;
+    // isMobilePortrait = isPortrait && getDeviceType(_mediaQueryData) == DeviceScreenType.Mobile;
+
+    _designHeightMultiplier = designSize.height / 100;
+    _designWidthMultiplier = designSize.width / 100;
 
     if (isPortrait) {
-      _screenWidth = _mediaQueryData.size.width;
-      _screenHeight = _mediaQueryData.size.height;
+      _screenWidth = constraints.maxWidth;
+      _screenHeight = constraints.maxHeight;
     } else {
-      _screenWidth = _mediaQueryData.size.height;
-      _screenHeight = _mediaQueryData.size.width;
+      _screenWidth = constraints.maxHeight;
+      _screenHeight = constraints.maxWidth;
     }
 
     _blockSizeHorizontal = _screenWidth / 100;
@@ -36,36 +40,21 @@ class SizeConfig {
     _heightMultiplier = _blockSizeVertical;
     _widthMultiplier = _blockSizeHorizontal;
 
-    print("TextSize : $_textMultiplier, Height : $_heightMultiplier, Width : $_widthMultiplier");
+    debugPrint("TextSize : $_textMultiplier, Height : $_heightMultiplier, Width : $_widthMultiplier");
   }
 
   static double getVerticalSize(double height) {
-    return (height / 8.12) * _heightMultiplier;
+    return (height / _designHeightMultiplier) * _heightMultiplier;
   }
 
   static double getHorizontalSize(double width) {
-    return (width / 3.75) * _widthMultiplier;
+    return (width / _designWidthMultiplier) * _widthMultiplier;
   }
 
   static double getTextSize(double textSize) {
-    return (textSize / 8.12) * _textMultiplier;
+    return (textSize / _designHeightMultiplier) * _textMultiplier;
   }
 
-  static double getTopScreenPadding() {
-    return _mediaQueryData.padding.top;
-  }
-
-  static double getBottomScreenPadding() {
-    return _mediaQueryData.padding.bottom;
-  }
-
-  static double getLeftScreenPadding() {
-    return _mediaQueryData.padding.left;
-  }
-
-  static double getRightScreenPadding() {
-    return _mediaQueryData.padding.right;
-  }
 }
 
 extension SizeConfigExtension on num {
@@ -87,7 +76,7 @@ extension SizeConfigExtension on num {
     }
   }
 
-  double sp(){
-    return vdp();
+  double sp() {
+    return vdp().toInt().toDouble();
   }
 }
