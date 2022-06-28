@@ -54,3 +54,13 @@ return SizeConfigParentWidget(
   ),
 );
 ```
+
+Inside your UI you can use
+
+```dart
+SizedBox(
+  width: 100.hdp(), // Horizontal values
+  height: 200.vdp(), //vertical values
+  child: Text("Text",style:TextStyle(fontSize: 16.sp())), // Text Size
+)
+```
