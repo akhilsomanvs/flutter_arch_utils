@@ -18,7 +18,7 @@ Add dependency
 ```yaml
 flutter_arch_utils:
     git:
-      url: git://github.com/akhilsomanvs/flutter_arch_utils.git
+      url: https://github.com/akhilsomanvs/flutter_arch_utils.git
 ```
 Add the following in main.dart
 
