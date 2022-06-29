@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_arch_utils/flutter_arch_utils.dart';
+part of flutter_arch_utils;
 
 typedef SizeConfigBuilder = Widget Function(
   BuildContext context,

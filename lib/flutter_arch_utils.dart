@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
 import 'arch_utils/enums/device_screen_type.dart';
@@ -22,3 +23,4 @@ part 'arch_utils/widgets/responsive_safe_area.dart';
 part 'arch_utils/widgets/responsize_builder.dart';
 part 'arch_utils/widgets/screen_type_layout.dart';
 part 'arch_utils/widgets/spacing_widgets.dart';
+part 'arch_utils/widgets/size_config_parent_widget.dart';
