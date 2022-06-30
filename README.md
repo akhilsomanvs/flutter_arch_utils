@@ -34,15 +34,13 @@ Future<void> _ensureScreenSize(window) async {
 }
 
 void main() async {
-  // Add these lines before calling ScreenUtil.init()/ScreenUtilInit()
-  // Better add these lines before runApp() if you are using native splash screen
   final window = WidgetsFlutterBinding.ensureInitialized().window;
   await _ensureScreenSize(window);
   runApp(const MyApp());
 }
 ```
 
-And in wrap the MaterialApp inside SizeConfigParentWidget 
+And in main() method, wrap the MaterialApp inside SizeConfigParentWidget 
 
 ```dart
 return SizeConfigParentWidget(
@@ -50,7 +48,6 @@ return SizeConfigParentWidget(
     title: 'App Name',
     debugShowCheckedModeBanner: false,
     home: HomeScreen(),
-    // home: OnBoardingSurveyScreen(),
   ),
 );
 ```
