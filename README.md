@@ -44,7 +44,7 @@ And in main() method, wrap the MaterialApp inside SizeConfigParentWidget
 
 ```dart
 return SizeConfigParentWidget(
-  designSize: const Size(375, 812),
+  designSize: const Size(375, 812), //change to the width and height of your designs/prototype. Values are scaled or calculated based on this size value.
   builder: (context, constraints, orientation) => MaterialApp(
     title: 'App Name',
     debugShowCheckedModeBanner: false,
